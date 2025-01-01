@@ -1,0 +1,11 @@
+<mujoco model="example">
+    <compiler inertiafromgeom="true" coordinate="local" assetdir="assets" autolimits="true"/>
+    <asset>
+        <mesh name="example_mesh" file="ropuk.obj"/>
+    </asset>
+    <worldbody>
+        <body name="example_body" pos="0 0 0.1">
+            <geom type="mesh" mesh="example_mesh" pos="0 0 0" size="1"/>
+        </body>
+    </worldbody>
+</mujoco>
