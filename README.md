@@ -4,26 +4,26 @@
 
 1. Clone the Repository
     ```bash
-    git clone https://github.com/drmwnrafi/mujoco_model.git
+    git clone https://github.com/drmwnrafi/mujoco_zoo.git
     ```
 2. Create a Python Virtual Environment
     ```bash
-    python -m venv mujoco_models
-    source mujoco_models/bin/activate  # For Windows: mujoco_models\Scripts\activate
+    python -m venv mj_zoo
+    source mj_zoo/bin/activate  
+    # For Windows: mj_zoo\Scripts\activate
     ```
 3. Install Dependencies
     ```bash
-    pip install -r requirements.txt
+    cd mujoco_zoo
+    pip install -e .
     ```
 4.  Run the Simulation
-    - Navigate to the project directory
-        ```bash
-        cd mujoco_model
-        ```
-    - Execute the simulation 
-        ```bash
-        python f450_geom_cntrl.py
-        ```
+    ```bash
+    cd mujoco_zoo
+    python mjzoo/src/mobile_robot/main.py 
+    # or
+    python mjzoo/src/quadcopter/main.py 
+    ```
 
 ## Model Previews
 | **Model**            | **Preview**                                     |

@@ -10,11 +10,6 @@ class Callbacks:
         self.lastx = 0
         self.lasty = 0
 
-    def keyboard(self, window, key, scancode, act, mods, model, data):
-        if act == glfw.PRESS and key == glfw.KEY_BACKSPACE:
-            mj.mj_resetData(model, data)
-            mj.mj_forward(model, data)
-
     def mouse_button(self, window, button, act, mods):
         self.button_left = (glfw.get_mouse_button(window, glfw.MOUSE_BUTTON_LEFT) == glfw.PRESS)
         self.button_middle = (glfw.get_mouse_button(window, glfw.MOUSE_BUTTON_MIDDLE) == glfw.PRESS)
@@ -48,3 +43,9 @@ class Callbacks:
     def scroll(self, window, xoffset, yoffset, model, scene, cam):
         action = mj.mjtMouse.mjMOUSE_ZOOM
         mj.mjv_moveCamera(model, action, 0.0, -0.05 * yoffset, scene, cam)
+        
+class KeyboardCallbacks():
+    def keyboard(self, window, key, scancode, act, mods, model, data):
+        if act == glfw.PRESS and key == glfw.KEY_BACKSPACE:
+            mj.mj_resetData(model, data)
+            mj.mj_forward(model, data)

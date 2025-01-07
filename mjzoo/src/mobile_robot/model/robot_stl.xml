@@ -1,0 +1,69 @@
+<mujoco model="ROPUK V2">
+  <asset>
+    <mesh file="STL/caster.stl" name="caster" scale="1 1 1"/>
+    <mesh file="STL/frame.stl" name="frame" scale="1 1 1"/>
+    <mesh file="STL/frame_upper.stl" name="frame_upper" scale="1 1 1"/>
+    <mesh file="STL/wheelmount.stl" name="mount" scale="1 1 1"/>
+    <mesh file="STL/motor.stl" name="motor" scale="1 1 1"/>
+    <mesh file="STL/tire.stl" name="tire" scale="1 1 1"/>
+    <mesh file="STL/lidar.stl" name="lidar" scale="1 1 1"/>
+    <mesh file="STL/laptop.stl" name="laptop" scale="1 1 1"/>
+  </asset>
+  <worldbody>
+    <body name="RopukV2" pos="0 0 0.2">
+        <joint name="root" type="free" damping="0" armature="0"/>
+
+        <geom type="mesh" mesh="lidar" pos="0 0 0.075" euler="0 0 -275"/>
+
+        <body name="frame" pos="0 0 0">
+            <geom type="mesh" mesh="frame" mass="2"/>
+            <geom type="mesh" mesh="frame_upper"/>
+            <geom type="mesh" mesh="laptop" pos="0 0 0.02" euler="0 0 90"/>
+        </body>
+
+        <body name="caster_fr" pos="0.094788 0.11594582 -0.0515">
+            <geom type="box" size="0.016 0.019 0.00225" pos="0 0 0.00225"/>
+            <geom type="mesh" mesh="caster"/>
+        </body>
+
+        <body name="caster_fl" pos="-0.094788 0.11594582 -0.0515">
+            <geom type="box" size="0.016 0.019 0.00225" pos="0 0 0.00225"/>
+            <geom type="mesh" mesh="caster"/>
+        </body>
+
+        <body name="caster_rr" pos="0.094788 -0.11594582 -0.0515">
+            <geom type="box" size="0.016 0.019 0.00225" pos="0 0 0.00225"/>
+            <geom type="mesh" mesh="caster"/>
+        </body>
+
+        <body name="caster_rl" pos="-0.094788 -0.11594582 -0.0515">
+            <geom type="box" size="0.016 0.019 0.00225" pos="0 0 0.00225"/>
+            <geom type="mesh" mesh="caster"/>
+        </body>
+
+        <body name="wheelmount_l" pos="0.114 0 -0.04519689" euler="0 0 90">
+            <geom type="mesh" mesh="mount" mass="0.3"/>
+            <!-- <joint name="slide_l" type="slide" axis="0 0 1" range="-0.01 0.01" damping="20"/> -->
+            <body name="wheel_l" pos="0 0 0">
+                <joint name="hinge_l" type="hinge" axis="0 1 0" pos="0 0 0"/>
+                <geom type="mesh" mesh="motor" mass="0.5"/>
+                <geom type="mesh" mesh="tire"/>
+            </body>
+        </body>
+
+        <body name="wheelmount_r" pos="-0.114 0 -0.04519689" euler="0 0 -90">
+            <geom type="mesh" mesh="mount" mass="0.3"/>
+            <!-- <joint name="slide_r" type="slide" axis="0 0 1" range="-0.01 0.01" damping="20"/> -->
+            <body name="wheel_r" pos="0 0 0">
+                <joint name="hinge_r" type="hinge" axis="0 1 0" pos="0 0 0"/>
+                <geom type="mesh" mesh="motor" mass="0.5"/>
+                <geom type="mesh" mesh="tire"/>
+            </body>
+        </body>
+    </body>
+  </worldbody>
+<actuator>
+    <motor name="actuator_r" joint="hinge_r" gear="40"/>
+    <motor name="actuator_l" joint="hinge_l" gear="40"/>
+</actuator>
+</mujoco>

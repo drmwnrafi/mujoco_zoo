@@ -1,0 +1,15 @@
+<mujoco model="Quadcopter">
+    <include file="f450.xml"/>
+    <option	timestep="0.001" gravity="0 0 -9.81" />
+
+    <asset>
+        <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+        <texture type="skybox" builtin="gradient" rgb1=".035 .206 .235" rgb2="1 1 1" width="32" height="512"/>
+        <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+    </asset>
+
+    <worldbody>
+        <geom name="floor" pos="0 0 0" size="0 0 .05" type="plane" material="grid" condim="3"/>
+        <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    </worldbody>
+</mujoco>

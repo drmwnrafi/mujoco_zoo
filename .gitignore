@@ -12,6 +12,7 @@ pyvenv.cfg
 pip-selfcheck.json
 
 .vscode
+.mj_zoo
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
