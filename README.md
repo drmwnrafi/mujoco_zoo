@@ -1,5 +1,15 @@
 # A Collection of MuJoCo Models
 
+This repository is my journey of learning MuJoCo. It also includes the application of Geometric Control for a quadcopter and Levenberg-Marquardt Point-to-Line ICP for mobile robot mapping. 
+
+## Model Previews
+| **Model**            | **Preview**                                     |
+|-----------------------|------------------------------------------------|
+| **Low Quality F450 Quadcopter** | ![Low Quality Quadcopter](assets/low_quality_f450.png) |
+| **High Quality F450 Quadcopter**   | ![High Quality Quadcopter](assets/high_quality_f450.png)           |
+| **Low Quality Mobile Robot** | ![Low Quality Mobile Robot](assets/low_quality_MR.png) |
+| **High Quality Mobile Robot** <br> ( Motor currently not working )   | ![High Quality Mobile Robot](assets/high_quality_MR.png)           |
+
 ## How to Use
 
 1. Clone the Repository
@@ -17,16 +27,23 @@
     cd mujoco_zoo
     pip install -e .
     ```
-4.  Run the Simulation
+4.  Run the Mujoco GLFW Simulation
     ```bash
     cd mujoco_zoo
     python mjzoo/src/mobile_robot/main.py 
     # or
     python mjzoo/src/quadcopter/main.py 
     ```
+4.  Run the Mujoco Tkinter GUI
+    ```bash
+    cd mujoco_zoo
+    python mjzoo/src/mobile_robot/main_tkinter.py
+    ```
 
-## Model Previews
-| **Model**            | **Preview**                                     |
-|-----------------------|------------------------------------------------|
-| **Simple Quadcopter** | ![Simple Quadcopter](assets/low_poly_f450.png) |
-| **F450 Quadcopter**   | ![F450 Quadcopter](assets/f450.png)           |
+<div style="text-align: center;">
+  <video controls style="display: inline-block;">
+    <source src="assets/gui.mp4" type="video/mp4">
+  </video>
+</div>
+
+

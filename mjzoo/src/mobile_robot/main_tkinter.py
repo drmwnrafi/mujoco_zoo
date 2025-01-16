@@ -351,7 +351,7 @@ if __name__ == "__main__":
     map_update_thread = None
     stop_map_update = threading.Event()
     dirname = os.path.dirname(__file__)
-    xml_path = os.path.join(dirname, "model", "scene.xml")
+    xml_path = os.path.join(dirname, "model", "scene_low.xml")
     
     root = ctk.CTk()
     config = AppConfig()

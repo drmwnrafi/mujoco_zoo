@@ -6,7 +6,6 @@ import numpy as np
 import mujoco as mj
 from mujoco.glfw import glfw
 import matplotlib.pyplot as plt
-import threading
 import cv2
 from scipy.spatial.transform import Rotation as R
 import time
@@ -23,8 +22,8 @@ slam = SLAMPipeline(dx_diff=0.05,
                     xyreso=0.05)
 
 dirname = os.path.dirname(__file__)
-xml_path = dirname + "/model/scene.xml"
-cam_config = True
+xml_path = dirname + "/model/scene_low.xml"
+cam_config = False
 callbacks = Callbacks()
 
 model = mj.MjModel.from_xml_path(xml_path)
