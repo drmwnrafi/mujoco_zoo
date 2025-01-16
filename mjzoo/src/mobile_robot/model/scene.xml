@@ -1,5 +1,5 @@
 <mujoco model="Mobile Robot">
-    <include file="low_quality.xml"/>
+    <include file="robot_stl.xml"/>
     <option timestep="0.001" gravity="0 0 -9.81" integrator="RK4" solver="PGS" iterations="200" tolerance="1e-8"/>
 
     <asset>
