@@ -1,0 +1,3 @@
+[submodule "mjzoo/modules/pyopengltk"]
+	path = mjzoo/modules/pyopengltk
+	url = https://github.com/drmwnrafi/pyopengltk.git

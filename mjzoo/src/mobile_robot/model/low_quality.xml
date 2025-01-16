@@ -3,23 +3,19 @@
       <rgba rangefinder="1 0.7 0.3 0.1"/>
     </visual>
 
-    <option>
-        <flag warmstart="disable"/>
-    </option>
-
     <worldbody>
         <!-- Arena 1-->
-        <geom type="box" size="0.0025 1.8 0.3" pos=" 1.5 0    0.3"/>
-        <geom type="box" size="0.0025 1.5 0.3" pos=" 0   -1.8 0.3" euler="0 0 90"/>
-        <geom type="box" size="0.0025 1.5 0.3" pos=" 0   1.8  0.3" euler="0 0 -90"/>
-        <geom type="box" size="0.0025 1.8 0.3" pos="-1.5 0    0.3"/>
+        <geom type="box" size="0.0025 2 0.3" pos=" 1.8 0    0.3"/>
+        <geom type="box" size="0.0025 1.8 0.3" pos=" 0   -2 0.3" euler="0 0 90"/>
+        <geom type="box" size="0.0025 1.8 0.3" pos=" 0   2  0.3" euler="0 0 -90"/>
+        <geom type="box" size="0.0025 2 0.3" pos="-1.8 0    0.3"/>
 
         <geom type="box" size="0.0025 1.2 0.3" pos="0.9  0    0.3"/>
         <geom type="box" size="0.0025 0.9 0.3" pos="0    -1.2 0.3" euler="0 0 90"/>
         <geom type="box" size="0.0025 0.9 0.3" pos="0    1.2  0.3" euler="0 0 -90"/>
         <geom type="box" size="0.0025 1.2 0.3" pos="-0.9 0    0.3"/>
 
-        <body name="RopukV2" pos="1.2 0.8 0.1">
+        <body name="RopukV2" pos="1.4 0.8 0.1">
         <joint type="free"/>
         <body name="chassis" pos="0 0 0">
             <!-- Base -->
@@ -76,47 +72,47 @@
         <!-- Free Wheels -->
         <geom type="cylinder" size="0.02 0.005" pos="0.095 0.11732082 -0.005"/>
         <body name="free_wheel1" pos="0.095 0.11732082 -0.0125">
-            <joint type="ball" name="fw1" />
+            <joint type="ball" name="fw1"/>
             <geom type="sphere" size="0.01"/>
         </body>
 
         <geom type="cylinder" size="0.02 0.005" pos="0.095 -0.11732082 -0.005"/>
         <body name="free_wheel2" pos="0.095 -0.11732082 -0.0125">
-            <joint type="ball" name="fw2" />
+            <joint type="ball" name="fw2"/>
             <geom type="sphere" size="0.01"/>
         </body>
 
         <geom type="cylinder" size="0.02 0.005" pos="-0.095 0.11732082 -0.005"/>
         <body name="free_wheel3" pos="-0.095 0.11732082 -0.0125">
-            <joint type="ball" name="fw3" />
+            <joint type="ball" name="fw3"/>
             <geom type="sphere" size="0.01"/>
         </body>
 
         <geom type="cylinder" size="0.02 0.005" pos="-0.095 -0.11732082 -0.005"/>
         <body name="free_wheel4" pos="-0.095 -0.11732082 -0.0125">
-            <joint type="ball" name="fw4" />
+            <joint type="ball" name="fw4"/>
             <geom type="sphere" size="0.01"/>
         </body>
         <!-- End Free Wheels -->
 
         <!-- Motors -->
         <body name="wheel1" pos="0.0995 0 0.03">
-            <joint type="slide" name="spring1" axis="0 0 1" damping="0.1" range="-0.015 0.025"/>
+            <joint type="slide" name="spring1" axis="0 0 1" damping="0.5" range="-0.015 0.025"/>
             <geom type="box" size="0.015 0.045 0.015" pos="0 0 0"/>
             <geom type="cylinder" size="0.005 0.0028" pos="0.015 0 0" euler="0 90 0" rgba="0 0 0 1"/>
             <body name="motor1">
                 <geom type="cylinder" size="0.05 0.0215" pos="0.0393 0 0" euler="0 90 0" rgba="0 0 0 1"/>
-                <joint name="wheel1_motor" type="hinge" damping="0.1" pos="0.0393 0 0" axis="1 0 0"/>
+                <joint name="wheel1_motor" type="hinge" damping="0.5" pos="0.0393 0 0" axis="1 0 0"/>
             </body>
         </body>
 
         <body name="wheel2" pos="-0.0995 0 0.03" euler="0 0 180">
-            <joint type="slide" name="spring2" axis="0 0 1" damping="0.1" range="-0.015 0.025"/>
+            <joint type="slide" name="spring2" axis="0 0 1" damping="0.5" range="-0.015 0.025"/>
             <geom type="box" size="0.015 0.045 0.015" pos="0 0 0"/>
             <geom type="cylinder" size="0.005 0.0028" pos="0.015 0 0" euler="0 90 0" rgba="0 0 0 0.6"/>
             <body name="motor2">
                 <geom type="cylinder" size="0.05 0.0215" pos="0.0393 0 0" euler="0 90 0" rgba="0 0 0 0.6"/>
-                <joint name="wheel2_motor" type="hinge" damping="0.1" pos="0.0393 0 0" axis="-1 0 0"/>
+                <joint name="wheel2_motor" type="hinge" damping="0.5" pos="0.0393 0 0" axis="-1 0 0"/>
             </body>
         </body>
         <!-- End Motors -->
@@ -128,9 +124,7 @@
 </sensor>
 
 <actuator>
-    <!-- <motor joint="wheel1_motor" ctrlrange="-1 1" gear="5" ctrllimited="true" forcerange="-100 100" forcelimited="true"/>
-    <motor joint="wheel2_motor" ctrlrange="-1 1" gear="5" ctrllimited="true" forcerange="-100 100" forcelimited="true"/> -->
-    <velocity joint="wheel1_motor" kv="0.15" ctrllimited="true" ctrlrange="-20 20"/>
-    <velocity joint="wheel2_motor" kv="0.15" ctrllimited="true" ctrlrange="-20 20"/>
+    <velocity joint="wheel1_motor" kv="0.15" ctrllimited="true" ctrlrange="-50 50"/>
+    <velocity joint="wheel2_motor" kv="0.15" ctrllimited="true" ctrlrange="-50 50"/>
 </actuator>
 </mujoco>

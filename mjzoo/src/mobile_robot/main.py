@@ -24,7 +24,7 @@ slam = SLAMPipeline(dx_diff=0.05,
 
 dirname = os.path.dirname(__file__)
 xml_path = dirname + "/model/scene.xml"
-cam_config = False
+cam_config = True
 callbacks = Callbacks()
 
 model = mj.MjModel.from_xml_path(xml_path)
