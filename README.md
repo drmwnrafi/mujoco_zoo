@@ -40,10 +40,8 @@ This repository is my journey of learning MuJoCo. It also includes the applicati
     python mjzoo/src/mobile_robot/main_tkinter.py
     ```
 
-<div style="text-align: center;">
-  <video controls style="display: inline-block;">
-    <source src="assets/gui.mp4" type="video/mp4">
-  </video>
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=9HrDTDOXUvg" target="_blank">
+    <img src="https://github.com/drmwnrafi/mujoco_zoo/blob/main/assets/gui.png" alt="MuJoCo Tkinter GUI - Mobile Robot Mapping" />
+  </a>
 </div>
-
-
