@@ -5,7 +5,6 @@ import os
 import numpy as np
 import mujoco as mj
 from mujoco.glfw import glfw
-import matplotlib.pyplot as plt
 import cv2
 from scipy.spatial.transform import Rotation as R
 import time
