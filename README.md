@@ -15,6 +15,7 @@ This repository is my journey of learning MuJoCo. It also includes the applicati
 1. Clone the Repository
     ```bash
     git clone https://github.com/drmwnrafi/mujoco_zoo.git
+    git submodule update --init --recursive
     ```
 2. Create a Python Virtual Environment
     ```bash

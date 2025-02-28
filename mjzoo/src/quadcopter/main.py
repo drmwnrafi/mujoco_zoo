@@ -81,7 +81,7 @@ mj.mjv_defaultOption(opt)
 scene = mj.MjvScene(model, maxgeom=10000)
 context = mj.MjrContext(model, mj.mjtFontScale.mjFONTSCALE_100.value)
 
-glfw.set_key_callback(window, lambda window, key, scancode, act, mods: callbacks.keyboard(window, key, scancode, act, mods, model, data))
+# glfw.set_key_callback(window, lambda window, key, scancode, act, mods: callbacks.keyboard(window, key, scancode, act, mods, model, data))
 glfw.set_cursor_pos_callback(window, lambda window, xpos, ypos: callbacks.mouse_move(window, xpos, ypos, model, scene, cam))
 glfw.set_mouse_button_callback(window, lambda window, button, act, mods: callbacks.mouse_button(window, button, act, mods))
 glfw.set_scroll_callback(window, lambda window, xoffset, yoffset: callbacks.scroll(window, xoffset, yoffset, model, scene, cam))
