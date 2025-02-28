@@ -1,4 +1,4 @@
-from mjzoo.modules.utils import * 
+from utils import * 
 import numpy as np
 import os
 import mujoco as mj
