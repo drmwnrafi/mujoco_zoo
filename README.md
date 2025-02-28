@@ -37,9 +37,10 @@ This repository is my journey of learning MuJoCo. It also includes the applicati
     ```
     
 Run the Mujoco Tkinter GUI (Optional)
-    ```bash
-    python mjzoo/src/mobile_robot/main_tkinter.py
-    ```
+    
+```bash
+python mjzoo/src/mobile_robot/main_tkinter.py
+```
 
 <div align="center">
   <a href="https://www.youtube.com/watch?v=9HrDTDOXUvg" target="_blank">
