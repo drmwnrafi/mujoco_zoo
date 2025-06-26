@@ -1,3 +1,6 @@
 [submodule "mjzoo/modules/pyopengltk"]
 	path = mjzoo/modules/pyopengltk
 	url = https://github.com/drmwnrafi/pyopengltk.git
+[submodule "mjzoo/modules/plicp-slam"]
+	path = mjzoo/modules/plicp-slam
+	url = https://github.com/drmwnrafi/plicp-slam.git

@@ -1,5 +1,5 @@
 from utils import * 
-from icp_slam.slam import SLAMPipeline 
+from plicp_slam.slam import SLAMPipeline 
 from keyboard_calls import keyboardGLFW
 import os
 import numpy as np
