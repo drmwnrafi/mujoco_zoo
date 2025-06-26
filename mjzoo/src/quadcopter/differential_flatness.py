@@ -207,118 +207,54 @@ class TrajectoryOptimizer:
 if __name__ == "__main__":
     import numpy as np
     import matplotlib.pyplot as plt
-    from mpl_toolkits.mplot3d import Axes3D
-    
-    # Define waypoints and parameters
+
+    # Define 2D waypoints (x, y)
     waypoints = np.array([
-        [0, 0, 0.35, 0],
-        [0, 5, 5, 0],
-        [5, 0, 5, 0],
-        [0, -5, 5, 0],
-        [-5, 0, 5, 0],
-        [0, 5, 10, 0],
+        [0, 0],
+        [0, 1500],
+        [1500, 1500],
     ])
 
-    n_coeffs = [8, 8, 8, 4]  
-    derivatives = [4, 4, 4, 2] 
-    times = [0, 4, 8, 12, 16, 22]
-    
-    # Initialize the TrajectoryOptimizer
+    n_coeffs = [8, 8]
+    derivatives = [2, 2]
+    times = [0, 1, 2]
+
     optimizer = TrajectoryOptimizer(n_coeffs, derivatives, times)
 
-    # Generate trajectory
     states, coeffs = optimizer.generate_trajectory(waypoints, num_points=500)
     t = np.linspace(times[0], times[-1], 500)
 
-    states1 = []
-
-    for time in t:
-        state = optimizer.solve(waypoints, time)
-        states1.append(state)
+    x = states[0][0, :]  # X positions
+    y = states[1][0, :]  # Y positions
+    vel_x = states[0][1, :]  # X velocities
+    vel_y = states[1][1, :]  # Y velocities
     
-    print(states1[0][3])
-
-    # Extract trajectory states
-    x = states1[0][0, :]
-    y = states1[1][0, :]
-    z = states1[2][0, :]
-    yaw = states1[3][0, :]
+    # Calculate heading angles from velocities
+    yaw = np.arctan2(vel_y, vel_x)
     
-    # vel = np.array([states[0][1, :], states[1][1, :], states[2][1, :]])  # vel x, y, z
-    # acc = np.array([states[0][2, :], states[1][2, :], states[2][2, :]])  # acc x, y, z
-    # jerk = np.array([states[0][3, :], states[1][3, :], states[2][3, :]])  # jerk x, y, z
-    # snap = np.array([states[0][4, :], states[1][4, :], states[2][4, :]])  # snap x, y, z
+    # Create main plot
+    plt.figure(figsize=(12, 6))
     
-    # Time array
-    time = np.linspace(0, times[-1], len(x))
+    # Trajectory plot
+    ax1 = plt.subplot(1, 2, 1)
+    ax1.plot(x, y, label='Trajectory')
+    ax1.plot(waypoints[:, 0], waypoints[:, 1], 'ro', label='Waypoints')
     
-    # Body frame directions (unit vectors in body frame)
-    body_frame_length = 0.5
-    u_x = body_frame_length * np.cos(yaw)  # X-direction in body frame
-    v_x = body_frame_length * np.sin(yaw)  # X-direction in body frame
-    w_x = np.zeros_like(yaw)               # X-direction Z-component is zero
 
-    u_y = -body_frame_length * np.sin(yaw)  # Y-direction in body frame
-    v_y = body_frame_length * np.cos(yaw)   # Y-direction in body frame
-    w_y = np.zeros_like(yaw)                # Y-direction Z-component is zero
-
-    # Plotting
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-
-    # Trajectory and waypoints
-    ax.plot(x, y, z, label='Trajectory')
-    ax.plot(waypoints[:, 0], waypoints[:, 1], waypoints[:, 2], 'o', label='Waypoints')
-
-    # X-axis visualization in body frame
-    skip = 5  # Skip points for better visualization
-    ax.quiver(x[::skip], y[::skip], z[::skip], u_x[::skip], v_x[::skip], w_x[::skip], 
-            color='r', label='Body X-axis')
-
-    # Y-axis visualization in body frame
-    ax.quiver(x[::skip], y[::skip], z[::skip], u_y[::skip], v_y[::skip], w_y[::skip], 
-            color='g', label='Body Y-axis')
+    ax1.set_title('Trajectory with Orientation')
+    ax1.set_xlabel('X position')
+    ax1.set_ylabel('Y position')
+    ax1.grid(True)
+    ax1.legend()
+    ax1.axis('equal')
+    # Add orientation arrows
+    skip = 20  # Plot every 20th arrow
+    for i in range(0, len(x), skip):
+        dx = np.cos(yaw[i]) * 50  # Arrow size scaling
+        dy = np.sin(yaw[i]) * 50
+        ax1.arrow(x[i], y[i], dx, dy, 
+                head_width=30, head_length=50, 
+                fc='darkorange', ec='navy')
     
-    # Z-direction body frame visualization
-    ax.quiver(x[::skip], y[::skip], z[::skip], 0, 0, body_frame_length, 
-            color='m', label='Body Z')
-
-    # Axis labels and legend
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Z')
-    ax.legend()
-
-    # # Plot velocity, acceleration, jerk, and snap
-    # fig2, axs = plt.subplots(4, 1, sharex=True, figsize=(10, 8))
-
-    # # Velocity
-    # axs[0].plot(time, vel[0], label='Vel X')
-    # axs[0].plot(time, vel[1], label='Vel Y')
-    # axs[0].plot(time, vel[2], label='Vel Z')
-    # axs[0].set_ylabel('Velocity (m/s)')
-    # axs[0].legend()
-
-    # # Acceleration
-    # axs[1].plot(time, acc[0], label='Acc X')
-    # axs[1].plot(time, acc[1], label='Acc Y')
-    # axs[1].plot(time, acc[2], label='Acc Z')
-    # axs[1].set_ylabel('Acceleration (m/s²)')
-    # axs[1].legend()
-
-    # # Jerk
-    # axs[2].plot(time, jerk[0], label='Jerk X')
-    # axs[2].plot(time, jerk[1], label='Jerk Y')
-    # axs[2].plot(time, jerk[2], label='Jerk Z')
-    # axs[2].set_ylabel('Jerk (m/s³)')
-    # axs[2].legend()
-
-    # # Snap
-    # axs[3].plot(time, snap[0], label='Snap X')
-    # axs[3].plot(time, snap[1], label='Snap Y')
-    # axs[3].plot(time, snap[2], label='Snap Z')
-    # axs[3].set_xlabel('Time (s)')
-    # axs[3].set_ylabel('Snap (m/s⁴)')
-    # axs[3].legend()
-
+    plt.tight_layout()
     plt.show()

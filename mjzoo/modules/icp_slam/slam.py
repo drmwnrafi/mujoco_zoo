@@ -1,13 +1,9 @@
-import sys
-import os
 import numpy as np
 from .plicp_cov import PLICP, KalmanICPCov
 from .compute_map import GridMap
 from .graph_constructor import PoseGraphOptimization
 import g2o
-import csv
 import scipy
-import imageio
 
 class SLAMPipeline:
     def __init__(self, dx_diff=0.05, dx_theta=0.05, lc_mod=10, closure=0.05, xyreso=0.05):

@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import tkinter as tk
 import math
-from enum import Enum
 from OpenGL import GL
 from pyopengltk import OpenGLFrame
 import mujoco as mj
@@ -10,7 +9,6 @@ import time
 from scipy.spatial.transform import Rotation as R
 from pynput import keyboard
 from mjzoo.modules.icp_slam.slam import SLAMPipeline 
-from vispy import scene
 
 class Joystick(ctk.CTkCanvas):
     def __init__(self, parent, max_distance=50, handle=20, width=None, height=None, **kwargs):
