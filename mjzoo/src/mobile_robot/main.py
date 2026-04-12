@@ -1,5 +1,5 @@
-from mjzoo.modules.utils import * 
-from mjzoo.modules.icp_slam.slam import SLAMPipeline 
+from utils import * 
+from icp_slam.slam import SLAMPipeline 
 from keyboard_calls import keyboardGLFW
 import os
 import numpy as np

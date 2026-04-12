@@ -15,30 +15,33 @@ This repository is my journey of learning MuJoCo. It also includes the applicati
 1. Clone the Repository
     ```bash
     git clone https://github.com/drmwnrafi/mujoco_zoo.git
+    git submodule update --init --recursive
     ```
 2. Create a Python Virtual Environment
     ```bash
     python -m venv mj_zoo
+    # For Linux: 
     source mj_zoo/bin/activate  
-    # For Windows: mj_zoo\Scripts\activate
+    # For Windows: 
+    mj_zoo\Scripts\activate
     ```
 3. Install Dependencies
     ```bash
     cd mujoco_zoo
-    pip install -e .
+    pip install -r requirements.txt
     ```
 4.  Run the Mujoco GLFW Simulation
     ```bash
-    cd mujoco_zoo
     python mjzoo/src/mobile_robot/main.py 
     # or
     python mjzoo/src/quadcopter/main.py 
     ```
-4.  Run the Mujoco Tkinter GUI
-    ```bash
-    cd mujoco_zoo
-    python mjzoo/src/mobile_robot/main_tkinter.py
-    ```
+    
+Run the Mujoco Tkinter GUI (Optional)
+    
+```bash
+python mjzoo/src/mobile_robot/main_tkinter.py
+```
 
 <div align="center">
   <a href="https://www.youtube.com/watch?v=9HrDTDOXUvg" target="_blank">

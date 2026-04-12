@@ -13,6 +13,7 @@ pip-selfcheck.json
 
 .vscode
 .mj_zoo
+.venv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
